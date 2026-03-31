@@ -3,6 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Al Meezan">
+<link rel="apple-touch-icon" href="/icon.png">
+<meta name="theme-color" content="#0f4c35">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>Al Meezan Sales Tracker</title>
 <style>
@@ -844,6 +850,13 @@ if(window.addEventListener){
   window.addEventListener('online',function(){ isOnline=true; setOnline(true); setSync('synced'); if(curUser) fetchMonth(CY,CM,function(){refreshS(curScr());}); });
   window.addEventListener('offline',function(){ isOnline=false; setOnline(false); setSync('offline'); });
 }
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js');
+    });
+  }
 </script>
 </body>
 </html>
